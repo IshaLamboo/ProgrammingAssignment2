@@ -32,12 +32,12 @@ makeCacheMatrix <- function(x = matrix()) {
 ## The cacheSolve function takes as input an object created by makeCacheMatrix, checks
 ## if the cachedinverse exists and either returns that or calculates the inverse anew.
 
-cacheSolve <- function(x) {
+cacheSolve <- function(x, ...) {
   myinverse <- x$getinverse()
   
   if(!is.null(myinverse)) return(myinverse)
   data <- x$get()
-  myinverse <- solve(data)
+  myinverse <- solve(data, ...)
   x$setinverse(myinverse)
   myinverse
 }
